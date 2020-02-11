@@ -9,41 +9,35 @@ const menus = [
         icon: "fa fa-clock-o"
     },
     {
-        name: "Profile",
-        to: "/profile",
+        name: "Thể loại",
+        to: "/categorys",
         exact: false,
-        icon: "fa fa-user"
+        icon: "fa fa-book"
     },
     {
-        name: "Basic Table",
-        to: "/basic-table",
+        name: "Bài viết",
+        to: "/article",
         exact: false,
-        icon: "fa fa-table"
+        icon: "fa fa-edit"
     },
     {
-        name: "Icons",
-        to: "/icons",
+        name: "Hình ảnh",
+        to: "/images",
         exact: false,
-        icon: "fa fa-font"
+        icon: "fa fa-image"
     },
     {
-        name: "Google Map",
-        to: "/google-map",
+        name: "Thiết lập",
+        to: "/setting",
         exact: false,
-        icon: "fa fa-globe"
+        icon: "fa fa-cog"
     },
-    {
-        name: "Blank Page",
-        to: "/blank-page",
-        exact: false,
-        icon: "fa fa-columns"
-    },
-    {
-        name: "Error 404",
-        to: "/error-404",
-        exact: false,
-        icon: "fa fa-info-circle"
-    }
+    // {
+    //     name: "Error 404",
+    //     to: "/error-404",
+    //     exact: false,
+    //     icon: "fa fa-info-circle"
+    // }
 ];
 const MenuLink = ({ label, to, activeOnlyWhenExact, icon }) => {
     return (

@@ -1,7 +1,10 @@
 import React from 'react';
 import DashboardContainer from './containers/DashboardContainer';
-import ProfileContainer from './containers/ProfileContainer';
 import NotFound from './components/NotFound';
+import CategorysContainer from './containers/CategorysContainer';
+import ArticleContainer from './containers/ArticleContainer';
+import ImagesContainer from './containers/ImagesContainer';
+import SettingContainer from './containers/SettingContainer'
 
 const routes = [
     {
@@ -10,9 +13,38 @@ const routes = [
         main: () => <DashboardContainer></DashboardContainer>
     },
     {
-        path: '/profile',
+        path: '/categorys',
         exact: false,
-        main: ({match, location}) => <ProfileContainer match={match} location= {location}></ProfileContainer>
+        main: ({ match, location }) => {
+            return (
+                <CategorysContainer
+                    match={match}
+                    location={location}>
+                </CategorysContainer>
+            )
+        }
+    },
+    {
+        path: '/article',
+        exact: false,
+        main: ({ match, location }) => {
+            return (
+                <ArticleContainer
+                    match={match}
+                    location={location}>
+                </ArticleContainer>
+            )
+        }
+    },
+    {
+        path: '/images',
+        exact: false,
+        main: () => <ImagesContainer></ImagesContainer>
+    },
+    {
+        path: '/setting',
+        exact: false,
+        main: () => <SettingContainer></SettingContainer>
     },
     {
         path: '',

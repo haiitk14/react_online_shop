@@ -3,9 +3,14 @@ import PartialView from '../../containers/PartialView';
 
 class Dashboard extends Component {
     render() {
+        let current = "Dashboard";
         return (
             <div className="container-fluid">
-                <PartialView></PartialView>
+
+                <PartialView
+                    current={current}
+                ></PartialView>
+
                 <div className="row">
                     <div className="col-sm-6">
                         <div className="card">

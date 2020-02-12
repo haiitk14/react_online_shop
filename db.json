@@ -1,0 +1,15 @@
+{
+    "categorys": [
+        {
+            "id": 1,
+            "name": "ABOUT US",
+            "code": "about-us",
+            "description": "Trang giới thiệu",
+            "order": 1,
+            "ispublic": true,
+            "titleseo": null,
+            "keywordsseo": null,
+            "descriptionseo": null
+        }
+    ]
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PartialView from '../../containers/PartialView';
 
 class Dashboard extends Component {
+    
     render() {
         let current = "Dashboard";
         return (

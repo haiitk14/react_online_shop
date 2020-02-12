@@ -1,10 +1,10 @@
 import React from 'react';
-import DashboardContainer from './containers/DashboardContainer';
+import DashboardContainer from './containers/Dashboard';
 import NotFound from './components/NotFound';
-import CategorysContainer from './containers/CategorysContainer';
-import ArticleContainer from './containers/ArticleContainer';
-import ImagesContainer from './containers/ImagesContainer';
-import SettingContainer from './containers/SettingContainer'
+import CategorysContainer from './containers/Categorys';
+import ArticleContainer from './containers/Article';
+import ImagesContainer from './containers/Images';
+import SettingContainer from './containers/Setting';
 
 const routes = [
     {

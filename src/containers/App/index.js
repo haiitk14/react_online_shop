@@ -6,6 +6,9 @@ import Header from '../../components/Header';
 import SideBar from '../../components/SideBar';
 
 class App extends Component {
+    componentDidMount() {
+        window.scroll(0, 0);
+    }
     render() {
         return (
             <Router>

@@ -73,7 +73,8 @@ class CategorysContainer extends Component {
     }
     editCategory = (id) => {
         this.props.editCategoryF(id);
-        console.log("A");
+        let { itemEditing } = this.props.itemEditing;
+        console.log(itemEditing);
     }
     // END event call API
 }

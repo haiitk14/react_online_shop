@@ -12,15 +12,15 @@
       "descriptionseo": null
     },
     {
-      "id": "507432a1-fdaf-5438-cb8d-5ecc515a64ce",
-      "name": "AAAAAAAAA",
-      "code": "aaaaaa",
-      "description": "dasdasd",
-      "order": "2",
-      "ispublic": true,
-      "titleseo": "dasd",
-      "keywordsseo": "assd",
-      "descriptionseo": "dasdas"
+      "id": "e7185695-d9f3-0293-ea6b-d9a9c1dacbe4",
+      "name": "BBBBBB",
+      "code": "bbbbb",
+      "description": "bbbbb",
+      "order": "",
+      "ispublic": false,
+      "titleseo": "bbbb",
+      "keywordsseo": "bbbb",
+      "descriptionseo": "bbbbb"
     }
   ]
 }

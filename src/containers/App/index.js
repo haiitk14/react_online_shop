@@ -4,6 +4,8 @@ import routes from './../../routes';
 import Loading from '../../components/Loading';
 import Header from '../../components/Header';
 import SideBar from '../../components/SideBar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
     componentDidMount() {
@@ -13,6 +15,7 @@ class App extends Component {
         return (
             <Router>
                 <Loading></Loading>
+                <ToastContainer />
                 <Header></Header>
                 <div id="main-wrapper">
                     <SideBar></SideBar>
@@ -24,6 +27,8 @@ class App extends Component {
                             {
                                 this.showRoutes(routes)
                             }
+                           
+
                         </Switch>
 
                         <footer className="footer text-center">
@@ -40,11 +45,11 @@ class App extends Component {
         if (routes.length > 0) {
             result = routes.map((item, index) => {
                 return (
-                    <Route 
-                        key={ index }
-                        path={ item.path } 
-                        exact={ item.exact }
-                        component={ item.main }
+                    <Route
+                        key={index}
+                        path={item.path}
+                        exact={item.exact}
+                        component={item.main}
                     >
                     </Route>
                 )

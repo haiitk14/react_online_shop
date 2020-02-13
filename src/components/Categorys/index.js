@@ -4,7 +4,13 @@ import {
 } from '@material-ui/core';
 
 class Categorys extends Component {
-    
+    onDelete = (id) => {
+        let { deleteCategory } = this.props;
+        deleteCategory(id);
+    }
+    onEdit = (id) => {
+        this.props.editCategory(id);
+    }
     render() {
         let { categorys } = this.props;
         return (
@@ -24,7 +30,7 @@ class Categorys extends Component {
                     </TableHead>
                     <TableBody>
                         {categorys.map((row, index) => (
-                            <TableRow key={row.name}>
+                            <TableRow key={row.id}>
                                 <TableCell>
                                     {index + 1}
                                 </TableCell>
@@ -43,10 +49,14 @@ class Categorys extends Component {
                                     />
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Button variant="outlined" color="primary" title="Chỉnh sửa" size="small">
+                                    <Button variant="outlined" color="primary" title="Chỉnh sửa" size="small"
+                                        onClick={()=>{ this.onEdit(row.id) }}
+                                    >
                                         Sửa
                                     </Button>
-                                    <Button variant="outlined" color="secondary" title="Xóa" size="small">
+                                    <Button variant="outlined" color="secondary" title="Xóa" size="small"
+                                        onClick={ ()=> { this.onDelete(row.id) }}
+                                    >
                                         Xóa
                                     </Button>
                                 </TableCell>

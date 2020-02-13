@@ -1,16 +1,6 @@
 import * as Types from './../constants/typeCategory';
 var initialState = [];
 
-// var findIndex = (products, id) => {
-//     var result = -1;
-//     products.forEach((product, index) => {
-//         if (product.id === id) {
-//             result = index;
-//         }
-//     });
-//     return result;
-// }
-
 const categorys = (state = initialState, action) => {
     var { categorys } = action;
     switch (action.type) {
@@ -20,8 +10,22 @@ const categorys = (state = initialState, action) => {
         case Types.POST_CATEGORY:
             state.push(action.category);
             return [...state];
+        case Types.DELETE_CATEGORY:
+            let { id } = action;
+            let index = findIndex(state, id);
+            state.splice(index, 1);
+            return [...state];
         default: return [...state];
     }
 };
+var findIndex = (categorys, id) => {
+    var result = -1;
+    categorys.forEach((categogy, index) => {
+        if (categogy.id === id) {
+            result = index;
+        }
+    });
+    return result;
+}
 
 export default categorys;

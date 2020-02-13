@@ -1,12 +1,13 @@
+import { Box, Button } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Categorys from '../../components/Categorys';
-import { actFetchCategorysRequest } from './../../actions/categoryAction';
-import DialogCategory from './dialog';
 import PartialView from '../../containers/PartialView';
-import { Box, Button } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-
+import { 
+    actFetchCategorysRequest, actAddCategoryRequest, actDeleteCategoryRequest, actEditCategoryRequest
+ } from './../../actions/categoryAction';
+import DialogCategory from './dialog';
 
 class CategorysContainer extends Component {
     state = {
@@ -18,7 +19,6 @@ class CategorysContainer extends Component {
 
     render() {
         let current = "Quản lý thể loại";
-
         let { categorys } = this.props;
         return (
             <div className="container-fluid">
@@ -32,7 +32,12 @@ class CategorysContainer extends Component {
                         Thêm mới
                 </Button>
                 </Box>
-                <Categorys categorys={categorys}></Categorys>
+                <Categorys
+                    categorys={categorys}
+                    deleteCategory={this.deleteCategory}
+                    editCategory={this.editCategory}
+                >
+                </Categorys>
                 {this.renderDialog()}
             </div>
         );
@@ -43,6 +48,7 @@ class CategorysContainer extends Component {
             <DialogCategory
                 open={open}
                 handleClose={this.handleClose}
+                saveForm={this.saveForm}
             ></DialogCategory>
         );
     }
@@ -56,16 +62,40 @@ class CategorysContainer extends Component {
             open: false
         })
     }
+
+    // Event call API
+    saveForm = (category) => {
+        this.props.saveCategoryF(category);
+        this.handleClose();
+    }
+    deleteCategory = (id) => {
+        this.props.deleteCategoryF(id);
+    }
+    editCategory = (id) => {
+        this.props.editCategoryF(id);
+        console.log("A");
+    }
+    // END event call API
 }
 const mapStateToProps = state => {
     return {
-        categorys: state.categorys
+        categorys: state.categorys,
+        itemEditing: state.itemEditing
     }
 }
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getAllCategory: () => {
             dispatch(actFetchCategorysRequest());
+        },
+        saveCategoryF: (category) => {
+            dispatch(actAddCategoryRequest(category));
+        },
+        deleteCategoryF: (id) => {
+            dispatch(actDeleteCategoryRequest(id));
+        },
+        editCategoryF: (id) => {
+            dispatch(actEditCategoryRequest(id));
         }
     }
 }

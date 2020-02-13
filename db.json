@@ -1,15 +1,26 @@
 {
-    "categorys": [
-        {
-            "id": 1,
-            "name": "ABOUT US",
-            "code": "about-us",
-            "description": "Trang giới thiệu",
-            "order": 1,
-            "ispublic": true,
-            "titleseo": null,
-            "keywordsseo": null,
-            "descriptionseo": null
-        }
-    ]
+  "categorys": [
+    {
+      "id": "c09cb0cc-d1d5-48b0-ab36-b3b1d66006af",
+      "name": "ABOUT US",
+      "code": "about-us",
+      "description": "Trang giới thiệu",
+      "order": 1,
+      "ispublic": true,
+      "titleseo": null,
+      "keywordsseo": null,
+      "descriptionseo": null
+    },
+    {
+      "id": "507432a1-fdaf-5438-cb8d-5ecc515a64ce",
+      "name": "AAAAAAAAA",
+      "code": "aaaaaa",
+      "description": "dasdasd",
+      "order": "2",
+      "ispublic": true,
+      "titleseo": "dasd",
+      "keywordsseo": "assd",
+      "descriptionseo": "dasdas"
+    }
+  ]
 }

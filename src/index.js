@@ -12,12 +12,12 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     appReducers,
     composeEnhancer(applyMiddleware(thunk)),
-  );
+);
 
 ReactDOM.render(
     <Provider store={store}>
         <App />
-    </Provider>, 
+    </Provider>,
     document.getElementById('root')
 );
 serviceWorker.unregister();

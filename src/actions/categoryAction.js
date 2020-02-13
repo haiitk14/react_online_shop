@@ -63,3 +63,22 @@ export const actEditCategory = (category) => {
         category
     }
 }
+export const actResetItemEditing = () => {
+    return {
+        type : typeCategory.RESET_ITEM_EDITING,
+    }
+}
+export const actUpdateCategoryRequest = (category) => {
+    return dispatch => {
+        return callApi(`categorys/${category.id}`, 'PUT', category).then(res => {
+            toastSuccess();
+            dispatch(actUpdateCategory(res.data));
+        });
+    }
+}
+export const actUpdateCategory = (category) => {
+    return {
+        type: typeCategory.UPDATE_CATEGORY,
+        category
+    }
+}

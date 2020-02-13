@@ -2,7 +2,7 @@ import * as Types from './../constants/typeCategory';
 var initialState = [];
 
 const categorys = (state = initialState, action) => {
-    var { categorys } = action;
+    var { categorys, id } = action;
     switch (action.type) {
         case Types.GET_CATEGORYS:
             state = categorys;
@@ -11,9 +11,23 @@ const categorys = (state = initialState, action) => {
             state.push(action.category);
             return [...state];
         case Types.DELETE_CATEGORY:
-            let { id } = action;
-            let index = findIndex(state, id);
-            state.splice(index, 1);
+            let indexDel = findIndex(state, id);
+            state.splice(indexDel, 1);
+            return [...state];
+        case Types.UPDATE_CATEGORY:
+            let { category } = action;
+            let indexUp = findIndex(state, category.id);
+            state[indexUp] = {
+                ...state[indexUp],
+                name: category.name,
+                code: category.code,
+                description: category.description,
+                order: category.order,
+                ispublic: category.ispublic,
+                titleseo: category.titleseo,
+                keywordsseo: category.keywordsseo,
+                descriptionseo: category.descriptionseo,
+            };
             return [...state];
         default: return [...state];
     }

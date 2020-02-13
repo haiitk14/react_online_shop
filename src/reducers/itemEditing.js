@@ -2,13 +2,17 @@ import * as Types from './../constants/typeCategory';
 
 var initialState = {};
 
-const itemEditing = (state = initialState, action) => {
-    switch(action.type){
+const itemEditingReducer = (state = initialState, action) => {
+    var { category } = action;
+    switch (action.type) {
         case Types.EDIT_CATEGORY:
-            return action.category;
+            return category;
+        case Types.RESET_ITEM_EDITING:
+            state = {};
+            return state;
         default:
             return state;
     }
 }
 
-export default itemEditing;
+export default itemEditingReducer;

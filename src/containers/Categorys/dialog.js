@@ -3,28 +3,37 @@ import {
     Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Card,
     CardContent, Grid, Checkbox, Typography
 } from '@material-ui/core';
-import { uuidv4 } from './../../commons/func';
 import { toast } from 'react-toastify';
-
+import { INITIAL_CATEGORY } from './../../constants/index';
 
 class DialogCategory extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            id: '',
-            txtName: '',
-            txtCode: '',
-            txtDescription: '',
-            txtOrder: '',
-            chkIsPublic: false,
-            txtTitleSeo: '',
-            txtKeywordsSeo: '',
-            txtDescriptionSeo: '',
-            errors: {
-                txtName: 'Tối thiểu 5 ký tự'
-            }
+        this.state = INITIAL_CATEGORY;
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        this.resetForm();
+        if (nextProps.itemEditing && nextProps.itemEditing.id) {
+            let {itemEditing} = nextProps;
+            let {id, name, code, description, order, ispublic, titleseo, keywordsseo, descriptionseo } = itemEditing;
+            this.setState({
+                id: id,
+                txtName: name,
+                txtCode: code,
+                txtDescription: description,
+                txtOrder: order,
+                chkIsPublic: ispublic,
+                txtTitleSeo: titleseo,
+                txtKeywordsSeo: keywordsseo,
+                txtDescriptionSeo: descriptionseo,
+                errors: {
+                    txtName: ''
+                }
+            });
         }
     }
+
     onChange = (e) => {
         var target = e.target;
         var name = target.name;
@@ -47,22 +56,28 @@ class DialogCategory extends Component {
     }
     onSave = (e) => {
         e.preventDefault();
-        let { saveForm } = this.props;
-        let { txtName, txtCode, txtDescription, txtOrder, chkIsPublic, txtTitleSeo, txtKeywordsSeo, txtDescriptionSeo } = this.state;
+        let { saveForm, itemEditing, updateCategory } = this.props;
+        let { id, txtName, txtCode, txtDescription, txtOrder, chkIsPublic, txtTitleSeo, txtKeywordsSeo, txtDescriptionSeo } = this.state;
         let { errors } = this.state;
-
+        let category = {
+            id: id,
+            name: txtName,
+            code: txtCode,
+            description: txtDescription,
+            order: txtOrder,
+            ispublic: chkIsPublic,
+            titleseo: txtTitleSeo,
+            keywordsseo: txtKeywordsSeo,
+            descriptionseo: txtDescriptionSeo
+        }
         if (this.validateForm(errors)) {
-            saveForm({
-                id: uuidv4(),
-                name: txtName,
-                code: txtCode,
-                description: txtDescription,
-                order: txtOrder,
-                ispublic: chkIsPublic,
-                titleseo: txtTitleSeo,
-                keywordsseo: txtKeywordsSeo,
-                descriptionseo: txtDescriptionSeo
-            });
+
+            if (!itemEditing.id) {
+                saveForm(category);
+            } else {
+                updateCategory(category);
+            }
+            this.resetForm();
         } else {
             toast.error("Vui lòng nhập đầy đủ thông tin");
         }
@@ -76,6 +91,9 @@ class DialogCategory extends Component {
                 }
             });
         return valid;
+    }
+    resetForm = () => {
+        this.setState(INITIAL_CATEGORY);
     }
 
     render() {

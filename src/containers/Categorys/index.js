@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Categorys from '../../components/Categorys';
 import PartialView from '../../containers/PartialView';
-import { 
-    actFetchCategorysRequest, actAddCategoryRequest, actDeleteCategoryRequest, actEditCategoryRequest
- } from './../../actions/categoryAction';
+import {
+    actFetchCategorysRequest, actAddCategoryRequest, actDeleteCategoryRequest, actEditCategoryRequest, 
+    actResetItemEditing, actUpdateCategoryRequest
+} from './../../actions/categoryAction';
 import DialogCategory from './dialog';
 
 class CategorysContainer extends Component {
@@ -16,6 +17,51 @@ class CategorysContainer extends Component {
     componentDidMount() {
         this.props.getAllCategory();
     }
+
+    renderDialog = () => {
+        let { open } = this.state;
+        let { itemEditing } = this.props;
+        return (
+            <DialogCategory
+                open={open}
+                handleClose={this.handleClose}
+                saveForm={this.saveForm}
+                itemEditing={itemEditing}
+                updateCategory={this.updateCategory}
+            ></DialogCategory>
+        );
+    }
+    handleClickOpen = () => {
+        this.setState({
+            open: true
+        });
+        this.props.actResetItemEditing();
+    };
+    handleClose = () => {
+        this.setState({
+            open: false
+        })
+    }
+
+    // Event call API
+    saveForm = (category) => {
+        this.props.saveCategoryF(category);
+        this.handleClose();
+    }
+    deleteCategory = (id) => {
+        this.props.deleteCategoryF(id);
+    }
+    editCategory = (id) => {
+        this.props.editCategoryF(id);
+        this.setState({
+            open: true
+        });
+    }
+    updateCategory = (category) => {
+        this.props.updateCategory(category);
+        this.handleClose();
+    }
+    // END event call API
 
     render() {
         let current = "Quản lý thể loại";
@@ -42,41 +88,6 @@ class CategorysContainer extends Component {
             </div>
         );
     }
-    renderDialog = () => {
-        let { open } = this.state;
-        return (
-            <DialogCategory
-                open={open}
-                handleClose={this.handleClose}
-                saveForm={this.saveForm}
-            ></DialogCategory>
-        );
-    }
-    handleClickOpen = () => {
-        this.setState({
-            open: true
-        })
-    };
-    handleClose = () => {
-        this.setState({
-            open: false
-        })
-    }
-
-    // Event call API
-    saveForm = (category) => {
-        this.props.saveCategoryF(category);
-        this.handleClose();
-    }
-    deleteCategory = (id) => {
-        this.props.deleteCategoryF(id);
-    }
-    editCategory = (id) => {
-        this.props.editCategoryF(id);
-        let { itemEditing } = this.props.itemEditing;
-        console.log(itemEditing);
-    }
-    // END event call API
 }
 const mapStateToProps = state => {
     return {
@@ -97,6 +108,12 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         editCategoryF: (id) => {
             dispatch(actEditCategoryRequest(id));
+        },
+        actResetItemEditing: () => {
+            dispatch(actResetItemEditing());
+        },
+        updateCategory: (category) => {
+            dispatch(actUpdateCategoryRequest(category))
         }
     }
 }

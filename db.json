@@ -9,29 +9,55 @@
       "ispublic": true,
       "titleseo": "",
       "keywordsseo": "",
-      "descriptionseo": ""
+      "descriptionseo": "",
+      "ismenu": true,
+      "createddate": "",
+      "updateddate": "02/14/2020 10:36 14"
     },
     {
-      "id": "e7185695-d9f3-0293-ea6b-d9a9c1dacbe4",
-      "name": "BBBBBB123",
-      "code": "bbbbb123",
-      "description": "bbbbb123",
-      "order": "6",
-      "ispublic": true,
-      "titleseo": "bbbb12312",
-      "keywordsseo": "bbbb123123",
-      "descriptionseo": "bbbbb312123"
+      "id": "2fc3d332-e25e-39b4-fc7c-2a63689c5aed",
+      "name": "Contanct",
+      "code": "contanct",
+      "description": "Trang liên hệ",
+      "order": "2",
+      "ispublic": false,
+      "titleseo": "",
+      "keywordsseo": "",
+      "descriptionseo": "",
+      "ismenu": true,
+      "createddate": "02/14/2020",
+      "updateddate": "02/14/2020"
     },
     {
-      "id": "f0e5d3c1-ea66-c39c-d8f8-7b84413c04e7",
-      "name": "CCCCCCC",
-      "code": "ccccc",
-      "description": "asfasfsdfsdf",
-      "order": "4",
+      "id": "62fe36bf-2231-8cb2-ce5a-651d9811d8e8",
+      "name": "Articles",
+      "code": "articles",
+      "description": "",
+      "order": "",
+      "ispublic": false,
+      "titleseo": "",
+      "keywordsseo": "",
+      "descriptionseo": "",
+      "ismenu": true,
+      "createddate": "02/14/2020 10:33 29",
+      "updateddate": "02/14/2020 10:33 53"
+    }
+  ],
+  "articles": [
+    {
+      "id": "c09cb0cc-d1d5-48b0-ab36-b3b1d66006a3",
+      "categoryid": "c09cb0cc-d1d5-48b0-ab36-b3b1d66006af",
+      "name": "Who we are",
+      "slug": "who-we-are",
+      "description": "",
+      "image": "",
+      "order": "1",
       "ispublic": true,
-      "titleseo": "fsdfsdf",
-      "keywordsseo": "sdfsd",
-      "descriptionseo": "fsdfsdf"
+      "titleseo": "",
+      "keywordsseo": "",
+      "descriptonseo": "",
+      "createddate": "",
+      "updateddate": ""
     }
   ]
 }

@@ -1,8 +1,8 @@
-import * as Types from './../constants/typeCategory';
+import * as Types from './../constants/ActionTypes';
 var initialState = [];
 
 const categorys = (state = initialState, action) => {
-    var { categorys, id } = action;
+    var { categorys, id, category } = action;
     switch (action.type) {
         case Types.GET_CATEGORYS:
             state = categorys;
@@ -15,7 +15,6 @@ const categorys = (state = initialState, action) => {
             state.splice(indexDel, 1);
             return [...state];
         case Types.UPDATE_CATEGORY:
-            let { category } = action;
             let indexUp = findIndex(state, category.id);
             state[indexUp] = {
                 ...state[indexUp],
@@ -28,6 +27,13 @@ const categorys = (state = initialState, action) => {
                 keywordsseo: category.keywordsseo,
                 descriptionseo: category.descriptionseo,
             };
+            return [...state];
+        case Types.UPDATE_STATUS:
+            let indexUpStatus = findIndex(state, category.id);
+            state[indexUpStatus] = {
+                ...state[indexUpStatus],
+                ispublic: state[indexUpStatus].ispublic
+            }
             return [...state];
         default: return [...state];
     }

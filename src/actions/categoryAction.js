@@ -1,4 +1,4 @@
-import * as typeCategory from './../constants/typeCategory';
+import * as Types from './../constants/ActionTypes';
 import callApi from './../utils/apiCaller';
 import { toastSuccess, toastDeleteSuccess } from './../commons/toastify';
 
@@ -12,7 +12,7 @@ export const actFetchCategorysRequest = () => {
 }
 export const actFetchCategorys = (categorys) => {
     return {
-        type: typeCategory.GET_CATEGORYS,
+        type: Types.GET_CATEGORYS,
         categorys
     }
 }
@@ -28,7 +28,7 @@ export const actAddCategoryRequest = (category) => {
 }
 export const actAddCategory = (category) => {
     return {
-        type: typeCategory.POST_CATEGORY,
+        type: Types.POST_CATEGORY,
         category
     }
 }
@@ -44,7 +44,7 @@ export const actDeleteCategoryRequest = (id) => {
 }
 export const actDeleteCategory = (id) => {
     return {
-        type: typeCategory.DELETE_CATEGORY,
+        type: Types.DELETE_CATEGORY,
         id
     }
 }
@@ -59,13 +59,13 @@ export const actEditCategoryRequest = (id) => {
 }
 export const actEditCategory = (category) => {
     return {
-        type : typeCategory.EDIT_CATEGORY,
+        type : Types.EDIT_CATEGORY,
         category
     }
 }
 export const actResetItemEditing = () => {
     return {
-        type : typeCategory.RESET_ITEM_EDITING,
+        type : Types.RESET_ITEM_EDITING,
     }
 }
 export const actUpdateCategoryRequest = (category) => {
@@ -78,7 +78,21 @@ export const actUpdateCategoryRequest = (category) => {
 }
 export const actUpdateCategory = (category) => {
     return {
-        type: typeCategory.UPDATE_CATEGORY,
+        type: Types.UPDATE_CATEGORY,
+        category
+    }
+}
+export const actUpdateStatusRequest = (category) => {
+    return dispatch => {
+        return callApi(`categorys/${category.id}`, 'PUT', category).then(res => {
+            toastSuccess();
+            dispatch(actUpdateStatus(res.data));
+        });
+    }
+}
+export const actUpdateStatus = (category) => {
+    return {
+        type: Types.UPDATE_STATUS,
         category
     }
 }

@@ -1,4 +1,4 @@
-import { uuidv4 } from './../commons/func';
+import { uuidv4, getCurrentDate } from './../commons/func';
 
 export const API_ENPOINT = 'http://localhost:3000';
 
@@ -12,7 +12,30 @@ export const INITIAL_CATEGORY = {
     txtTitleSeo: '',
     txtKeywordsSeo: '',
     txtDescriptionSeo: '',
+    isMenu: true,
+    createdDate: getCurrentDate(),
+    updatedDate: "",
     errors: {
         txtName: 'Tối thiểu 5 ký tự'
+    }
+}
+
+export const INITIAL_ARTICLE = {
+    id: uuidv4(),
+    sltcategoryId: '',
+    txtName: '',
+    txtSlug: '',
+    txtDescription: '',
+    txtImage: '',
+    txtOrder: '',
+    chkIsPublic: false,
+    txtTitleSeo: '',
+    txtKeywordsSeo: '',
+    txtDescriptionSeo: '',
+    createdDate: getCurrentDate(),
+    updatedDate: "",
+    errors: {
+        txtName: 'Tối thiểu 5 ký tự',
+        txtSlug: 'Tối thiểu 1 ký tự'
     }
 }

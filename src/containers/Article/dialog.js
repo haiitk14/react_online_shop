@@ -1,44 +1,15 @@
 import React, { Component } from 'react';
-import { getCurrentDate } from '../../commons/func';
 import {
     Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Card,
-    CardContent, Grid, Checkbox, Typography
+    CardContent, Grid, Checkbox, Typography, FormControl, InputLabel, NativeSelect, FormHelperText
 } from '@material-ui/core';
-import { toast } from 'react-toastify';
-import { INITIAL_CATEGORY } from './../../constants/index';
+import { INITIAL_ARTICLE } from './../../constants/index';
 
-class DialogCategory extends Component {
+class DialogArticle extends Component {
     constructor(props) {
         super(props);
-        this.state = INITIAL_CATEGORY;
+        this.state = INITIAL_ARTICLE;
     }
-
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        this.resetForm();
-        if (nextProps.itemEditing && nextProps.itemEditing.id) {
-            let { itemEditing } = nextProps;
-            let { id, name, code, description, order, ispublic, titleseo, keywordsseo, descriptionseo, 
-                ismenu, createddate, updateddate } = itemEditing;
-            this.setState({
-                id: id,
-                txtName: name,
-                txtCode: code,
-                txtDescription: description,
-                txtOrder: order,
-                chkIsPublic: ispublic,
-                txtTitleSeo: titleseo,
-                txtKeywordsSeo: keywordsseo,
-                txtDescriptionSeo: descriptionseo,
-                isMenu: ismenu,
-                createdDate: createddate,
-                updatedDate: updateddate,
-                errors: {
-                    txtName: ''
-                }
-            });
-        }
-    }
-
     onChange = (e) => {
         var target = e.target;
         var name = target.name;
@@ -59,55 +30,9 @@ class DialogCategory extends Component {
             [name]: value
         });
     }
-    onSave = (e) => {
-        e.preventDefault();
-        let { saveForm, itemEditing, updateCategory } = this.props;
-        let { id, txtName, txtCode, txtDescription, txtOrder, chkIsPublic, txtTitleSeo, txtKeywordsSeo, txtDescriptionSeo,
-        isMenu, createdDate, updatedDate } = this.state;
-        let { errors } = this.state;
-        let category = {
-            id: id,
-            name: txtName,
-            code: txtCode,
-            description: txtDescription,
-            order: txtOrder,
-            ispublic: chkIsPublic,
-            titleseo: txtTitleSeo,
-            keywordsseo: txtKeywordsSeo,
-            descriptionseo: txtDescriptionSeo,
-            ismenu: isMenu,
-            createddate: createdDate,
-            updateddate: getCurrentDate()
-        }
-        if (this.validateForm(errors)) {
-
-            if (!itemEditing.id) {
-                saveForm(category);
-            } else {
-                updateCategory(category);
-            }
-            this.resetForm();
-        } else {
-            toast.error("Vui lòng nhập đầy đủ thông tin");
-        }
-    }
-    validateForm = (errors) => {
-        let valid = true;
-        Object.values(errors).forEach(
-            (val) => {
-                if (val.length > 0) {
-                    valid = false
-                }
-            });
-        return valid;
-    }
-    resetForm = () => {
-        this.setState(INITIAL_CATEGORY);
-    }
-
     render() {
         let { open, handleClose } = this.props;
-        let { txtName, txtCode, txtDescription, txtOrder, chkIsPublic, txtTitleSeo, txtKeywordsSeo, txtDescriptionSeo } = this.state;
+        let { sltcategoryId, txtName, txtSlug, txtDescription, txtOrder, chkIsPublic, txtTitleSeo, txtKeywordsSeo, txtDescriptionSeo } = this.state;
         let { errors } = this.state;
         return (
             <Dialog
@@ -119,12 +44,10 @@ class DialogCategory extends Component {
                 maxWidth="lg"
                 fullWidth={true}
             >
-                <DialogTitle id="alert-dialog-slide-title">
-                    {"Chi tiết"}
-                </DialogTitle>
+                <DialogTitle id="alert-dialog-slide-title">Chi tiết</DialogTitle>
                 <DialogContent>
                     <Grid container spacing={1}>
-                        <Grid item xs={6}>
+                        <Grid item xs={4}>
                             <Box component="span" m={1}>
                                 <Card>
                                     <Box m={2}>
@@ -137,6 +60,25 @@ class DialogCategory extends Component {
                                         <form noValidate autoComplete="off">
                                             <Grid container spacing={1}>
                                                 <Grid item xs={12}>
+                                                    <FormControl error fullWidth>
+                                                        <InputLabel htmlFor="name-native-error">Name</InputLabel>
+                                                        <NativeSelect
+                                                            value={sltcategoryId}
+                                                            onChange={this.onChange}
+                                                            name="sltcategoryId"
+                                                            inputProps={{
+                                                                id: 'name-native-error',
+                                                            }}
+                                                        >
+                                                            <option value="" />
+                                                            <option value="hai">Hai</option>
+                                                            <option value="olivier">Olivier</option>
+                                                            <option value="kevin">Kevin</option>
+                                                        </NativeSelect>
+                                                        <FormHelperText>Error</FormHelperText>
+                                                    </FormControl>
+                                                </Grid>
+                                                <Grid item xs={12}>
                                                     <TextField label="Tên loại" fullWidth
                                                         name="txtName"
                                                         value={txtName}
@@ -147,8 +89,8 @@ class DialogCategory extends Component {
                                                 </Grid>
                                                 <Grid item xs={12}>
                                                     <TextField label="Mã loại" fullWidth
-                                                        name="txtCode"
-                                                        value={txtCode}
+                                                        name="txtSlug"
+                                                        value={txtSlug}
                                                         onChange={this.onChange}
                                                     />
                                                 </Grid>
@@ -180,8 +122,6 @@ class DialogCategory extends Component {
                                     </CardContent>
                                 </Card>
                             </Box>
-                        </Grid>
-                        <Grid item xs={6}>
                             <Box component="span" m={1}>
                                 <Card>
                                     <Box m={2}>
@@ -220,6 +160,9 @@ class DialogCategory extends Component {
                                 </Card>
                             </Box>
                         </Grid>
+                        <Grid item xs={8}>
+                        // NỘI DUNG ARTICLE
+                        </Grid>
                     </Grid>
 
                 </DialogContent>
@@ -238,4 +181,4 @@ class DialogCategory extends Component {
     }
 }
 
-export default DialogCategory;
+export default DialogArticle;

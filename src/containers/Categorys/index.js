@@ -6,7 +6,7 @@ import Categorys from '../../components/Categorys';
 import PartialView from '../../containers/PartialView';
 import {
     actFetchCategorysRequest, actAddCategoryRequest, actDeleteCategoryRequest, actEditCategoryRequest, 
-    actResetItemEditing, actUpdateCategoryRequest
+    actResetItemEditing, actUpdateCategoryRequest, actUpdateStatusRequest
 } from './../../actions/categoryAction';
 import DialogCategory from './dialog';
 
@@ -58,8 +58,11 @@ class CategorysContainer extends Component {
         });
     }
     updateCategory = (category) => {
-        this.props.updateCategory(category);
+        this.props.updateCategoryF(category);
         this.handleClose();
+    }
+    updateStatus = (category) => {
+        this.props.upsdateStatusF(category);
     }
     // END event call API
 
@@ -82,6 +85,7 @@ class CategorysContainer extends Component {
                     categorys={categorys}
                     deleteCategory={this.deleteCategory}
                     editCategory={this.editCategory}
+                    updateStatus={this.updateStatus}
                 >
                 </Categorys>
                 {this.renderDialog()}
@@ -112,8 +116,11 @@ const mapDispatchToProps = (dispatch, props) => {
         actResetItemEditing: () => {
             dispatch(actResetItemEditing());
         },
-        updateCategory: (category) => {
+        updateCategoryF: (category) => {
             dispatch(actUpdateCategoryRequest(category))
+        },
+        upsdateStatusF: (category) => {
+            dispatch(actUpdateStatusRequest(category));
         }
     }
 }

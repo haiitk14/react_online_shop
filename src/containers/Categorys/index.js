@@ -6,8 +6,9 @@ import Categorys from '../../components/Categorys';
 import PartialView from '../../containers/PartialView';
 import {
     actFetchCategorysRequest, actAddCategoryRequest, actDeleteCategoryRequest, actEditCategoryRequest, 
-    actResetItemEditing, actUpdateCategoryRequest, actUpdateStatusRequest
+    actUpdateCategoryRequest, actUpdateStatusRequest
 } from './../../actions/categoryAction';
+import { actResetItemEditing } from './../../actions/index';
 import DialogCategory from './dialog';
 
 class CategorysContainer extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCurrentDate } from '../../commons/func';
+import { getCurrentDate, stringToSlug } from '../../commons/func';
 import {
     Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Card,
     CardContent, Grid, Checkbox, Typography
@@ -43,27 +43,46 @@ class DialogCategory extends Component {
         var target = e.target;
         var name = target.name;
         var value = target.type === 'checkbox' ? target.checked : target.value;
+        this.setState({
+            [name]: value
+        });
+    }
+    onChangeValidate = (e) => {
+        var target = e.target;
+        var name = target.name;
+        var value = target.type === 'checkbox' ? target.checked : target.value;
         // check error
         let { errors } = this.state;
+        let generateCode = "";
         switch (name) {
             case 'txtName':
                 if (value.length > 5) {
                     errors.txtName = '';
+                    generateCode = stringToSlug(value);
                 }
                 break;
             default:
                 break;
         }
-        this.setState({
-            errors,
-            [name]: value
-        });
+        if (generateCode.length > 0) {
+            this.setState({
+                errors,
+                [name]: value,
+                txtCode: generateCode
+            });
+        } else {
+            this.setState({
+                errors,
+                [name]: value,
+            });
+        }
+        
     }
     onSave = (e) => {
         e.preventDefault();
         let { saveForm, itemEditing, updateCategory } = this.props;
         let { id, txtName, txtCode, txtDescription, txtOrder, chkIsPublic, txtTitleSeo, txtKeywordsSeo, txtDescriptionSeo,
-        isMenu, createdDate, updatedDate } = this.state;
+        isMenu, createdDate } = this.state;
         let { errors } = this.state;
         let category = {
             id: id,
@@ -140,7 +159,7 @@ class DialogCategory extends Component {
                                                     <TextField label="Tên loại" fullWidth
                                                         name="txtName"
                                                         value={txtName}
-                                                        onChange={this.onChange}
+                                                        onChange={this.onChangeValidate}
                                                         error={errors.txtName === '' ? false : true}
                                                         helperText={errors.txtName}
                                                     />
@@ -150,6 +169,8 @@ class DialogCategory extends Component {
                                                         name="txtCode"
                                                         value={txtCode}
                                                         onChange={this.onChange}
+                                                        disabled
+                                                        title="Tự động xin ra khi nhập tên thể loại"
                                                     />
                                                 </Grid>
                                                 <Grid item xs={12}>

@@ -7,12 +7,12 @@
       "description": "Trang giới thiệu",
       "order": 1,
       "ispublic": true,
-      "titleseo": "",
-      "keywordsseo": "",
-      "descriptionseo": "",
+      "titleseo": "123",
+      "keywordsseo": "123",
+      "descriptionseo": "3123",
       "ismenu": true,
       "createddate": "",
-      "updateddate": "02/14/2020 10:36 14"
+      "updateddate": "02/15/2020 23:01 48"
     },
     {
       "id": "2fc3d332-e25e-39b4-fc7c-2a63689c5aed",
@@ -20,7 +20,7 @@
       "code": "contanct",
       "description": "Trang liên hệ",
       "order": "2",
-      "ispublic": false,
+      "ispublic": true,
       "titleseo": "",
       "keywordsseo": "",
       "descriptionseo": "",
@@ -41,6 +41,20 @@
       "ismenu": true,
       "createddate": "02/14/2020 10:33 29",
       "updateddate": "02/14/2020 10:33 53"
+    },
+    {
+      "id": "96bcf97e-30de-f676-6aac-e19914145a9c",
+      "name": "Sản phẩm mới",
+      "code": "san-pham-moi",
+      "description": "tất cả san 3 phẩm",
+      "order": "4",
+      "ispublic": true,
+      "titleseo": "",
+      "keywordsseo": "",
+      "descriptionseo": "",
+      "ismenu": true,
+      "createddate": "02/15/2020 00:14 08",
+      "updateddate": "02/15/2020 00:14 36"
     }
   ],
   "articles": [
@@ -49,13 +63,36 @@
       "categoryid": "c09cb0cc-d1d5-48b0-ab36-b3b1d66006af",
       "name": "Who we are",
       "slug": "who-we-are",
-      "description": "",
+      "description": "asdase asda dss\nsdfsdfsdfsd",
       "image": "",
       "order": "1",
       "ispublic": true,
       "titleseo": "",
       "keywordsseo": "",
-      "descriptonseo": "",
+      "createddate": "",
+      "updateddate": "02/16/2020 21:02 18"
+    },
+    {
+      "id": "0ab8fa77-2552-d20e-fa12-a5ab8d38d2a4",
+      "categoryid": "c09cb0cc-d1d5-48b0-ab36-b3b1d66006af",
+      "name": "dasda das dasd123",
+      "slug": "dasda-das-dasd123",
+      "description": "dasdasd123",
+      "image": "",
+      "order": "4",
+      "ispublic": true,
+      "titleseo": "dasdasd123",
+      "keywordsseo": "dasdasd123",
+      "descriptionseo": "dasdasd123",
+      "createddate": "02/15/2020 22:20 56",
+      "updateddate": "02/15/2020 23:31 34"
+    }
+  ],
+  "editors": [
+    {
+      "id": "009cb0cc-d1d5-48b0-ab36-b3b1d66006af",
+      "articlesid": "c09cb0cc-d1d5-48b0-ab36-b3b1d66006a3",
+      "content": "",
       "createddate": "",
       "updateddate": ""
     }

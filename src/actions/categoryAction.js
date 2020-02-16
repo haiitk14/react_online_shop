@@ -57,17 +57,14 @@ export const actEditCategoryRequest = (id) => {
         });
     }
 }
-export const actEditCategory = (category) => {
+export const actEditCategory = (itemEditing) => {
     return {
-        type : Types.EDIT_CATEGORY,
-        category
+        type : Types.EDITING_ITEM,
+        itemEditing
     }
 }
-export const actResetItemEditing = () => {
-    return {
-        type : Types.RESET_ITEM_EDITING,
-    }
-}
+
+// Action Update
 export const actUpdateCategoryRequest = (category) => {
     return dispatch => {
         return callApi(`categorys/${category.id}`, 'PUT', category).then(res => {
@@ -94,5 +91,20 @@ export const actUpdateStatus = (category) => {
     return {
         type: Types.UPDATE_STATUS,
         category
+    }
+}
+
+// Action GET CATEGORY by is public = true
+export const actGetCategoryByIsPublicRequest = () => {
+    return dispatch => {
+        return callApi(`categorys?ispublic=true`, 'GET', null).then(res => {
+            dispatch(actGetCategoryByIsPublic(res.data));
+        });
+    }
+}
+export const actGetCategoryByIsPublic = (categorys) => {
+    return {
+        type: Types.GET_CATEGORYS_IS_PUBLIC,
+        categorys
     }
 }

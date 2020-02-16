@@ -26,6 +26,7 @@ const categorys = (state = initialState, action) => {
                 titleseo: category.titleseo,
                 keywordsseo: category.keywordsseo,
                 descriptionseo: category.descriptionseo,
+                updateddate: category.updateddate
             };
             return [...state];
         case Types.UPDATE_STATUS:

@@ -5,11 +5,15 @@ import {
 
 class Article extends Component {
     onDelete = (id) => {
-        let { deleteArticles } = this.props;
-        deleteArticles(id);
+        let { deleteArticle } = this.props;
+        deleteArticle(id);
     }
     onEdit = (id) => {
-        this.props.editArticles(id);
+        this.props.editArticle(id);
+    }
+    onUpdateStatus = (article) => {
+        article.ispublic = !article.ispublic;
+        this.props.updateStatus(article);
     }
     render() {
         let { articles } = this.props;
@@ -42,7 +46,7 @@ class Article extends Component {
                                 <TableCell align="right">
                                     <Checkbox
                                         checked={row.ispublic}
-                                        // onChange={handleChange}
+                                        onChange={() => { this.onUpdateStatus(row) }}
                                         value="primary"
                                         inputProps={{ 'aria-label': 'primary checkbox' }}
                                     />

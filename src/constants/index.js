@@ -36,6 +36,5 @@ export const INITIAL_ARTICLE = {
     updatedDate: "",
     errors: {
         txtName: 'Tối thiểu 5 ký tự',
-        txtSlug: 'Tối thiểu 1 ký tự'
     }
 }

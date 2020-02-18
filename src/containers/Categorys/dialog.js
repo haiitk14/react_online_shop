@@ -85,18 +85,18 @@ class DialogCategory extends Component {
         isMenu, createdDate } = this.state;
         let { errors } = this.state;
         let category = {
-            id: id,
-            name: txtName,
-            code: txtCode,
-            description: txtDescription,
-            order: txtOrder,
-            ispublic: chkIsPublic,
-            titleseo: txtTitleSeo,
-            keywordsseo: txtKeywordsSeo,
-            descriptionseo: txtDescriptionSeo,
-            ismenu: isMenu,
-            createddate: createdDate,
-            updateddate: getCurrentDate()
+            Id: id,
+            Name: txtName,
+            Code: txtCode,
+            Description: txtDescription,
+            Order: Number(txtOrder),
+            IsPublic: chkIsPublic,
+            TitleSeo: txtTitleSeo,
+            KeywordsSeo: txtKeywordsSeo,
+            DescriptionSeo: txtDescriptionSeo,
+            IsMenu: isMenu,
+            CreatedDate: createdDate,
+            UpdatedDate: getCurrentDate()
         }
         if (this.validateForm(errors)) {
 

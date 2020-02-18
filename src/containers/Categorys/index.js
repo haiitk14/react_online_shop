@@ -4,10 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Categorys from '../../components/Categorys';
 import PartialView from '../../containers/PartialView';
-import {
-    actFetchCategorysRequest, actAddCategoryRequest, actDeleteCategoryRequest, actEditCategoryRequest, 
-    actUpdateCategoryRequest, actUpdateStatusRequest
-} from './../../actions/categoryAction';
+import { actAddCategoryRequest, actDeleteCategoryRequest, actEditCategoryRequest, actFetchCategorysRequest, actUpdateCategoryRequest, actUpdateStatusRequest } from './../../actions/categoryAction';
 import { actResetItemEditing } from './../../actions/index';
 import DialogCategory from './dialog';
 

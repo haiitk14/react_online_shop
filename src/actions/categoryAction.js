@@ -6,7 +6,6 @@ import { toastSuccess, toastDeleteSuccess } from './../commons/toastify';
 export const actFetchCategorysRequest = () => {
     return dispatch => {
         return callApi('categorys', 'GET', null).then(res => {
-            console.log(res);
             dispatch(actFetchCategorys(res.data));
         });
     }
@@ -21,7 +20,7 @@ export const actFetchCategorys = (categorys) => {
 // Action add new
 export const actAddCategoryRequest = (category) => {
     return dispatch => {
-        return callApi('categorys', 'POST', category).then(res => {
+        return callApi('categorys', 'POST', JSON.stringify(category)).then(res => {
             toastSuccess();
             dispatch(actAddCategory(res.data));
         });

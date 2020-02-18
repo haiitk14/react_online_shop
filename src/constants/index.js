@@ -1,6 +1,6 @@
 import { uuidv4, getCurrentDate } from './../commons/func';
 
-export const API_ENPOINT = 'http://localhost:3000';
+export const API_ENPOINT = 'https://localhost:44330/api';
 
 export const INITIAL_CATEGORY = {
     id: uuidv4(),

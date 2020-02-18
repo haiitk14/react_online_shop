@@ -6,6 +6,7 @@ import { toastSuccess, toastDeleteSuccess } from './../commons/toastify';
 export const actFetchCategorysRequest = () => {
     return dispatch => {
         return callApi('categorys', 'GET', null).then(res => {
+            console.log(res);
             dispatch(actFetchCategorys(res.data));
         });
     }

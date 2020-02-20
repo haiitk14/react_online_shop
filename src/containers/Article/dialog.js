@@ -25,22 +25,24 @@ class DialogArticle extends Component {
         this.resetForm();
         if (nextProps.itemEditing && nextProps.itemEditing.id) {
             let { itemEditing } = nextProps;
-            let { id, categoryid, name, slug, description, image, order, ispublic, titleseo, keywordsseo, descriptionseo,
-                createddate, updateddate } = itemEditing;
+            let { id, categoryId, name, slug, description, image, order, isPublic, titleSeo, keywordsSeo, descriptionSeo,
+                createdDate, updatedDate, content } = itemEditing;
+                console.log(itemEditing);
             this.setState({
                 id: id,
-                sltcategoryId: categoryid,
+                sltcategoryId: categoryId,
                 txtName: name,
                 txtSlug: slug,
                 txtDescription: description,
                 txtImage: image,
                 txtOrder: order,
-                chkIsPublic: ispublic,
-                txtTitleSeo: titleseo,
-                txtKeywordsSeo: keywordsseo,
-                txtDescriptionSeo: descriptionseo,
-                createdDate: createddate,
-                updatedDate: updateddate,
+                chkIsPublic: isPublic,
+                txtTitleSeo: titleSeo,
+                txtKeywordsSeo: keywordsSeo,
+                txtDescriptionSeo: descriptionSeo,
+                createdDate: createdDate,
+                updatedDate: updatedDate,
+                txtContent: content,
                 errors: {
                     txtName: ''
                 }
@@ -81,6 +83,12 @@ class DialogArticle extends Component {
         });
 
     }
+    onChangeEditor = (e) => {
+        let value = e.editor.getData();
+        this.setState({
+            txtContent: value
+        });
+    }
     // onChangeHandlerFile = (e) => {
     //     e.preventDefault();
     //     console.log(e.target.files[0]);
@@ -98,22 +106,23 @@ class DialogArticle extends Component {
         e.preventDefault();
         let { saveForm, updateArticle, itemEditing } = this.props;
         let { id, sltcategoryId, txtName, txtSlug, txtDescription, txtImage, txtOrder, chkIsPublic, txtTitleSeo,
-            txtKeywordsSeo, txtDescriptionSeo, createdDate } = this.state;
+            txtKeywordsSeo, txtDescriptionSeo, createdDate, txtContent } = this.state;
         let { errors } = this.state;
         let article = {
             id: id,
-            categoryid: sltcategoryId,
+            categoryId: sltcategoryId,
             name: txtName,
             slug: txtSlug,
             description: txtDescription,
             image: txtImage,
             order: txtOrder,
-            ispublic: chkIsPublic,
-            titleseo: txtTitleSeo,
-            keywordsseo: txtKeywordsSeo,
+            isPublic: chkIsPublic,
+            titleSeo: txtTitleSeo,
+            keywordsSeo: txtKeywordsSeo,
             descriptionseo: txtDescriptionSeo,
-            createddate: createdDate,
-            updateddate: getCurrentDate()
+            createdDate: createdDate,
+            updatedDate: getCurrentDate(),
+            content: txtContent
         }
         if (this.validateForm(errors)) {
 
@@ -144,7 +153,7 @@ class DialogArticle extends Component {
     render() {
         let { open, handleClose, categorysParam } = this.props;
         let { sltcategoryId, txtName, txtSlug, txtDescription, txtOrder, chkIsPublic,
-            txtTitleSeo, txtKeywordsSeo, txtDescriptionSeo } = this.state;
+            txtTitleSeo, txtKeywordsSeo, txtDescriptionSeo, txtContent } = this.state;
         let { errors } = this.state;
         return (
             <Dialog
@@ -286,9 +295,10 @@ class DialogArticle extends Component {
                         </Grid>
                         <Grid item xs={8}>
                             <CKEditor
-                                data="<p>Some initial data</p>"
+                                name="txtContent"
+                                data={txtContent}
                                 type="classic"
-                                onChange={evt => console.log(evt.editor.getData())}
+                                onChange={this.onChangeEditor}
                                 onBeforeLoad={(CKEDITOR) => (CKEDITOR.disableAutoInline = true)}
                             />
                         </Grid>

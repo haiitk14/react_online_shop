@@ -34,6 +34,7 @@ export const INITIAL_ARTICLE = {
     txtDescriptionSeo: '',
     createdDate: getCurrentDate(),
     updatedDate: "",
+    txtContent: "<p>Some initial data123</p>",
     errors: {
         txtName: 'Tối thiểu 5 ký tự',
     }

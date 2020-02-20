@@ -52,7 +52,6 @@ class ArticleContainer extends Component {
     renderDialog = () => {
         let { open } = this.state;
         let { categorysParam, itemEditing } = this.props;
-
         return (
             <DialogArticle
                 open={open}

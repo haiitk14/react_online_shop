@@ -40,12 +40,12 @@ class Article extends Component {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.categoryid}</TableCell>
+                                <TableCell align="right">{row.categoryName}</TableCell>
                                 <TableCell align="right">{row.description}</TableCell>
                                 <TableCell align="right">{row.order}</TableCell>
                                 <TableCell align="right">
                                     <Checkbox
-                                        checked={row.ispublic}
+                                        checked={row.isPublic}
                                         onChange={() => { this.onUpdateStatus(row) }}
                                         value="primary"
                                         inputProps={{ 'aria-label': 'primary checkbox' }}

@@ -15,7 +15,7 @@ export function getCurrentDate() {
     var MM = String(today.getMinutes()).padStart(2, '0');
     var ss = String(today.getSeconds()).padStart(2, '0');
 
-    today = mm + '/' + dd + '/' + yyyy + ' ' + hh + ':' + MM + ' ' + ss;
+    today = mm + '/' + dd + '/' + yyyy + ' ' + hh + ':' + MM + ':' + ss;
     return today;
 }
 

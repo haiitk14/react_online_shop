@@ -16,7 +16,7 @@ class ArticleContainer extends Component {
     }
     componentDidMount() {
         this.props.getAllArticles();
-        this.props.getCategoryIsPublicF();
+        this.props.getCategoryIsPublicF(true);
     }
     handleClickOpen = () => {
         this.setState({
@@ -103,8 +103,8 @@ const mapDispatchToProps = (dispatch, props) => {
         getAllArticles: () => {
             dispatch(actFetchArticlesRequest())
         },
-        getCategoryIsPublicF: () => {
-            dispatch(actGetCategoryByIsPublicRequest())
+        getCategoryIsPublicF: (ispublic) => {
+            dispatch(actGetCategoryByIsPublicRequest(ispublic))
         },
         saveArticleF: (article) => {
             dispatch(actAddArticleRequest(article));

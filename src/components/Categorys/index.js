@@ -12,7 +12,7 @@ class Categorys extends Component {
         this.props.editCategory(id);
     }
     onUpdateStatus = (category) => {
-        category.ispublic = !category.ispublic;
+        category.isPublic = !category.isPublic;
         this.props.updateStatus(category);
     }
     render() {
@@ -46,7 +46,7 @@ class Categorys extends Component {
                                 <TableCell align="right">{row.order}</TableCell>
                                 <TableCell align="right">
                                     <Checkbox
-                                        checked={row.ispublic}
+                                        checked={row.isPublic}
                                         onChange={()=>{ this.onUpdateStatus(row) }}
                                         value="primary"
                                         inputProps={{ 'aria-label': 'primary checkbox' }}

@@ -20,7 +20,7 @@ export const actFetchCategorys = (categorys) => {
 // Action add new
 export const actAddCategoryRequest = (category) => {
     return dispatch => {
-        return callApi('categorys', 'POST', JSON.stringify(category)).then(res => {
+        return callApi('categorys', 'POST', category).then(res => {
             toastSuccess();
             dispatch(actAddCategory(res.data));
         });
@@ -42,10 +42,10 @@ export const actDeleteCategoryRequest = (id) => {
         });
     }
 }
-export const actDeleteCategory = (id) => {
+export const actDeleteCategory = (category) => {
     return {
         type: Types.DELETE_CATEGORY,
-        id
+        category
     }
 }
 
@@ -67,7 +67,7 @@ export const actEditCategory = (itemEditing) => {
 // Action Update
 export const actUpdateCategoryRequest = (category) => {
     return dispatch => {
-        return callApi(`categorys/${category.id}`, 'PUT', category).then(res => {
+        return callApi(`categorys/${category.Id}`, 'PUT', category).then(res => {
             toastSuccess();
             dispatch(actUpdateCategory(res.data));
         });
@@ -95,9 +95,9 @@ export const actUpdateStatus = (category) => {
 }
 
 // Action GET CATEGORY by is public = true
-export const actGetCategoryByIsPublicRequest = () => {
+export const actGetCategoryByIsPublicRequest = (ispublic) => {
     return dispatch => {
-        return callApi(`categorys?ispublic=true`, 'GET', null).then(res => {
+        return callApi(`categorys/ispublic/${ispublic}`, 'GET', null).then(res => {
             dispatch(actGetCategoryByIsPublic(res.data));
         });
     }

@@ -17,21 +17,21 @@ class DialogCategory extends Component {
         this.resetForm();
         if (nextProps.itemEditing && nextProps.itemEditing.id) {
             let { itemEditing } = nextProps;
-            let { id, name, code, description, order, ispublic, titleseo, keywordsseo, descriptionseo, 
-                ismenu, createddate, updateddate } = itemEditing;
+            let { id, name, code, description, order, isPublic, titleSeo, keywordsSeo, descriptionSeo, 
+                isMenu, createdDate, updatedDate } = itemEditing;
             this.setState({
                 id: id,
                 txtName: name,
                 txtCode: code,
                 txtDescription: description,
                 txtOrder: order,
-                chkIsPublic: ispublic,
-                txtTitleSeo: titleseo,
-                txtKeywordsSeo: keywordsseo,
-                txtDescriptionSeo: descriptionseo,
-                isMenu: ismenu,
-                createdDate: createddate,
-                updatedDate: updateddate,
+                chkIsPublic: isPublic,
+                txtTitleSeo: titleSeo,
+                txtKeywordsSeo: keywordsSeo,
+                txtDescriptionSeo: descriptionSeo,
+                isMenu: isMenu,
+                createdDate: createdDate,
+                updatedDate: updatedDate,
                 errors: {
                     txtName: ''
                 }

@@ -119,7 +119,7 @@ class DialogArticle extends Component {
             isPublic: chkIsPublic,
             titleSeo: txtTitleSeo,
             keywordsSeo: txtKeywordsSeo,
-            descriptionseo: txtDescriptionSeo,
+            descriptionSeo: txtDescriptionSeo,
             createdDate: createdDate,
             updatedDate: getCurrentDate(),
             content: txtContent

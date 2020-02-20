@@ -19,24 +19,24 @@ const articles = (state = initialState, action) => {
             let indexUp = findIndex(state, article.id);
             state[indexUp] = {
                 ...state[indexUp],
-                categoryid: article.categoryid,
+                categoryId: article.categoryId,
                 name: article.name,
                 slug: article.slug,
                 description: article.description,
                 image: article.image,
                 order: article.order,
-                ispublic: article.ispublic,
-                titleseo: article.titleseo,
-                keywordsseo: article.keywordsseo,
-                descriptionseo: article.descriptionseo,
-                updateddate: article.updateddate
+                isPublic: article.isPublic,
+                titleSeo: article.titleSeo,
+                keywordsSeo: article.keywordsSeo,
+                descriptionSeo: article.descriptionSeo,
+                updatedDate: article.updatedDate
             };
             return [...state];
         case Types.UPDATE_STATUS_ARTICLE:
             let indexUpStatus = findIndex(state, article.id);
             state[indexUpStatus] = {
                 ...state[indexUpStatus],
-                ispublic: state[indexUpStatus].ispublic
+                isPublic: state[indexUpStatus].isPublic
             }
             return [...state];
         default: return [...state];

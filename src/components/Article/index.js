@@ -12,7 +12,7 @@ class Article extends Component {
         this.props.editArticle(id);
     }
     onUpdateStatus = (article) => {
-        article.ispublic = !article.ispublic;
+        article.isPublic = !article.isPublic;
         this.props.updateStatus(article);
     }
     render() {

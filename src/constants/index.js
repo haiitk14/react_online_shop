@@ -1,9 +1,9 @@
-import { uuidv4, getCurrentDate } from './../commons/func';
+import { getCurrentDate } from './../commons/func';
 
 export const API_ENPOINT = 'https://localhost:44330/api';
 
 export const INITIAL_CATEGORY = {
-    id: uuidv4(),
+    id: '',
     txtName: '',
     txtCode: '',
     txtDescription: '',
@@ -14,14 +14,14 @@ export const INITIAL_CATEGORY = {
     txtDescriptionSeo: '',
     isMenu: true,
     createdDate: getCurrentDate(),
-    updatedDate: "",
+    updatedDate: '',
     errors: {
         txtName: 'Tối thiểu 5 ký tự'
     }
 }
 
 export const INITIAL_ARTICLE = {
-    id: uuidv4(),
+    id: '',
     sltcategoryId: '',
     txtName: '',
     txtSlug: '',
@@ -33,8 +33,8 @@ export const INITIAL_ARTICLE = {
     txtKeywordsSeo: '',
     txtDescriptionSeo: '',
     createdDate: getCurrentDate(),
-    updatedDate: "",
-    txtContent: "<p>Some initial data123</p>",
+    updatedDate: '',
+    txtContent: '<p></p>',
     errors: {
         txtName: 'Tối thiểu 5 ký tự',
     }

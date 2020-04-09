@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCurrentDate, stringToSlug } from '../../commons/func';
+import { getCurrentDate, stringToSlug, uuidv4 } from '../../commons/func';
 import {
     Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Card,
     CardContent, Grid, Checkbox, Typography
@@ -59,6 +59,8 @@ class DialogCategory extends Component {
                 if (value.length > 5) {
                     errors.txtName = '';
                     generateCode = stringToSlug(value);
+                } else {
+                    errors.txtName = 'Tối thiểu 5 ký tự';
                 }
                 break;
             default:
@@ -85,7 +87,7 @@ class DialogCategory extends Component {
         isMenu, createdDate } = this.state;
         let { errors } = this.state;
         let category = {
-            Id: id,
+            Id: id === "" ? uuidv4() : id,
             Name: txtName,
             Code: txtCode,
             Description: txtDescription,

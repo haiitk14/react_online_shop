@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Article from '../../components/Article';
 import DialogArticle from './dialog';
 import PartialView from '../PartialView';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
 import { actFetchArticlesRequest, actAddArticleRequest, atcDeleteArticleRequest, 
@@ -12,12 +12,15 @@ import { actResetItemEditing } from './../../actions/index';
 
 class ArticleContainer extends Component {
     state = {
-        open: false
+        open: false,
+        openDialogDel: false,
+        idDelete: ""
     }
     componentDidMount() {
         this.props.getAllArticles();
         this.props.getCategoryIsPublicF(true);
     }
+    // EVENT Handler
     handleClickOpen = () => {
         this.setState({
             open: true
@@ -29,12 +32,26 @@ class ArticleContainer extends Component {
             open: false
         })
     }
+    handleClickDialogDel = () => {
+        let { openDialogDel } = this.state;
+        this.setState({
+            openDialogDel : !openDialogDel,
+            idDelete: ""
+        });
+    }
+    deleteArticle = (id) => {
+        this.setState({
+            idDelete: id,
+            openDialogDel: true
+        });
+    }
+    //./
+
+
+    // CALl API
     saveForm = (article) => {
         this.props.saveArticleF(article);
         this.handleClose();
-    }
-    deleteArticle = (id) => {
-        this.props.deleteArticleF(id);
     }
     editArticle = (id) => {
         this.props.editArticleF(id);
@@ -49,6 +66,15 @@ class ArticleContainer extends Component {
     updateStatus = (article) => {
         this.props.updateStatusF(article);
     }
+    callDeleteArticle = () => {
+        let { idDelete } = this.state;
+        this.props.deleteArticleF(idDelete);
+        this.setState({
+            openDialogDel: false
+        });
+    }
+    //./
+
     renderDialog = () => {
         let { open } = this.state;
         let { categorysParam, itemEditing } = this.props;
@@ -61,6 +87,33 @@ class ArticleContainer extends Component {
                 updateArticle={this.updateArticle}
                 categorysParam={categorysParam}
             ></DialogArticle>
+        );
+    }
+
+    renderDialogDelete = () => {
+        let { openDialogDel } = this.state;
+        return (
+            <Dialog
+                open={openDialogDel}
+                onClose={this.handleClickDialogDel}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">Cảnh báo</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Bạn có chắt chắn xóa
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={this.handleClickDialogDel} color="primary">
+                        Hủy
+                </Button>
+                    <Button onClick={this.callDeleteArticle} color="primary" autoFocus>
+                        Đồng ý
+                </Button>
+                </DialogActions>
+            </Dialog>
         );
     }
 
@@ -86,6 +139,7 @@ class ArticleContainer extends Component {
                 >
                 </Article>
                 {this.renderDialog()}
+                { this.renderDialogDelete() }
             </div>
         );
     }

@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 import CKEditor from 'ckeditor4-react';
 import { INITIAL_ARTICLE } from './../../constants/index';
-import { stringToSlug, getCurrentDate } from './../../commons/func';
+import { stringToSlug, getCurrentDate, uuidv4 } from './../../commons/func';
 import { toast } from 'react-toastify';
 import ImageUploader from "react-images-upload";
 import "./styles.css";
@@ -109,7 +109,7 @@ class DialogArticle extends Component {
             txtKeywordsSeo, txtDescriptionSeo, createdDate, txtContent } = this.state;
         let { errors } = this.state;
         let article = {
-            id: id,
+            id: id === '' ? uuidv4() : id,
             categoryId: sltcategoryId,
             name: txtName,
             slug: txtSlug,

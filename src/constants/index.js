@@ -39,3 +39,15 @@ export const INITIAL_ARTICLE = {
         txtName: 'Tối thiểu 5 ký tự',
     }
 }
+
+export const INITIAL_SETTING = {
+    id: '',
+    txtCompanyName: '',
+    txtWebsite: '',
+    txtSlogan: '',
+    txtCopyright: '',
+    txtEmail: '',
+    txtHotline: '',
+    txtAddress: '',
+    txtLocation: ''
+}
